@@ -1,0 +1,34 @@
+﻿@using System.Web.Mvc;
+@using System;
+@using System.Collections.Generic;
+
+@Model
+
+@{
+    ViewBag.Title = "Index";
+    DateTime a = new DateTime();
+}
+
+<h2>Search for train passages</h2>
+
+<p>
+
+   
+
+    @using (Html.BeginForm())
+    {
+        <p>Startdate: @Html.TextBox("startDate") <br />
+            EndDate: @Html.TextBox("endDate") <br />
+            Location: @Html.DropDownList("locationAndEpc",ViewBag.ListOfLocations as List<SelectListItem>, "-- Select Location--")<br />
+            Number of passages per page: @Html.TextBox("itemsPerPage") <br />
+            User: @Html.TextBox("user") <br />
+    
+        <input type="submit" value="Search" />
+        </p>
+    }
+</p>
+
+
+
+
+

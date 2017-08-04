@@ -1,0 +1,128 @@
+﻿@using System.Xml.Linq;
+@using IIProjectClient.Models;
+@using PagedList.Mvc;
+@using PagedList;
+@using System;
+
+@{
+    ViewBag.Title = "SearchResults";
+}
+
+<h2>SearchResults</h2>
+
+
+
+@{
+    ViewBag.Title = "SearchResult";
+    // XElement
+    ServiceMessage serviceMessage = ViewBag.serviceMessage;
+}
+
+@**f user is authorized *@
+@if (@serviceMessage.responseInformation.ResponseCode == "1")
+{
+
+    <h2>Vehicle Passages Search Results</h2>
+
+    <p>
+        <b> @serviceMessage.requestInformation.Location</b> <br />
+        <b>@serviceMessage.requestInformation.FromTime.ToString("yyyy MMM dd") </b> <br />
+        <b>@serviceMessage.requestInformation.ToTime.ToString("yyyy MMM dd")</b>
+    </p>
+
+    <p>Receiver: @serviceMessage.requestInformation.Receiver</p>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Time
+            </th>
+            <th>
+                Vehicle EPC
+            </th>
+            <th>
+                Location EPC
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Vehicleinformation
+            </th>
+            <th>
+                Approval information
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var vehi in ViewBag.OnePageOfPassages)
+        {
+            <tr style="border-bottom: 1px solid black;">
+                <td class="timeTable">
+                    @((DateTime)vehi.Time)
+                </td>
+                <td>
+                    @((string)vehi.VehicleEPC)
+                </td>
+                <td>
+                    @((string)vehi.LocationEPC)
+                </td>
+                <td>
+                    @((string)vehi.LocationName)
+                </td>
+                <td>
+                    <table width="330px">
+                        <tr><td><b>EVN:</b> @((string)vehi.EVN)</td></tr>
+                        <tr><td><b>Vehicle owner:</b> @((string)vehi.VehicleOwner)</td></tr>
+                        <tr><td><b>Maintenance manager:</b> @((string)vehi.MaintenanceManager)</td></tr>
+                        <tr><td><b>Vehicle type:</b> @((string)vehi.VehicleType)</td></tr>
+                        <tr><td><b>Vehicle sub-type:</b> @((string)vehi.VehicleSubCategory)</td></tr>
+
+                    </table>
+                </td>
+                <td>
+                    <table width="200px">
+                        <tr><td><b>@((string)vehi.ApprovedForTraffic)</b></td></tr><br />
+                        <tr><td><b>Approval period</b>@((string)vehi.ApprovedFrom)  -  @((string)vehi.ApprovedTo)</td></tr>
+                        <tr><td></td></tr>
+
+                    </table>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfPassages, page => Url.Action("SearchResults", new { page, size = ViewBag.perPage }))
+
+<form action="@Url.Action("Index")">
+    <input type="submit" class="btn btn-primary" value="Return to Index" />
+</form>
+
+}
+
+@*If an internal error occurs*@
+else if (@serviceMessage.responseInformation.ResponseCode == "2" || ViewBag.perPage <= 0)
+{
+    <h2>Internal error. Could not load results, or results were not available.</h2>
+        <p></p>
+        <form action="@Url.Action("Index")">
+            <input type="submit" class="btn btn-primary" value="Return to Index" />
+        </form>
+}
+
+
+        @*If user is not authorized *@
+else if (@serviceMessage.responseInformation.ResponseCode == "3")
+{
+    <h2>The user @serviceMessage.requestInformation.Receiver is not authorized to make requests.</h2>
+        <p></p>
+        <form action="@Url.Action("Index")">
+            <input type="submit" class="btn btn-primary" value="Return to Index" />
+        </form>
+}
+
+

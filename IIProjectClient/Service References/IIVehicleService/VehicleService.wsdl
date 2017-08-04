@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="VehicleService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50431/VehicleService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50431/VehicleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50431/VehicleService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IIProjectService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IVehicleService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_XmlAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:XmlAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_XmlAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:XmlAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_FordonPassageConstruct_InputMessage">
+    <wsdl:part name="parameters" element="tns:FordonPassageConstruct" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_FordonPassageConstruct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FordonPassageConstructResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_GetElementValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetElementValue" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_GetElementValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetElementValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_AuthenticateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="IVehicleService_AuthenticateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVehicleService">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVehicleService/GetData" message="tns:IVehicleService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVehicleService/GetDataResponse" message="tns:IVehicleService_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVehicleService/GetDataUsingDataContract" message="tns:IVehicleService_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVehicleService/GetDataUsingDataContractResponse" message="tns:IVehicleService_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="XmlAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVehicleService/XmlAnswer" message="tns:IVehicleService_XmlAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVehicleService/XmlAnswerResponse" message="tns:IVehicleService_XmlAnswer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FordonPassageConstruct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVehicleService/FordonPassageConstruct" message="tns:IVehicleService_FordonPassageConstruct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVehicleService/FordonPassageConstructResponse" message="tns:IVehicleService_FordonPassageConstruct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElementValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVehicleService/GetElementValue" message="tns:IVehicleService_GetElementValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVehicleService/GetElementValueResponse" message="tns:IVehicleService_GetElementValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVehicleService/AuthenticateUser" message="tns:IVehicleService_AuthenticateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVehicleService/AuthenticateUserResponse" message="tns:IVehicleService_AuthenticateUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IVehicleService" type="tns:IVehicleService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IVehicleService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IVehicleService/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XmlAnswer">
+      <soap:operation soapAction="http://tempuri.org/IVehicleService/XmlAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FordonPassageConstruct">
+      <soap:operation soapAction="http://tempuri.org/IVehicleService/FordonPassageConstruct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementValue">
+      <soap:operation soapAction="http://tempuri.org/IVehicleService/GetElementValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="http://tempuri.org/IVehicleService/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VehicleService">
+    <wsdl:port name="BasicHttpBinding_IVehicleService" binding="tns:BasicHttpBinding_IVehicleService">
+      <soap:address location="http://localhost:50431/VehicleService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

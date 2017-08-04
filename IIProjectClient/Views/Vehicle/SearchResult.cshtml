@@ -1,0 +1,25 @@
+﻿@using System.Xml.Linq;
+@using IIProjectClient.Models;
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "SearchResult";
+    // XElement 
+    ServiceMessage serviceMessage = ViewBag.serviceMessage;
+}
+
+<h2>SearchResult</h2>
+
+<p>@serviceMessage.requestInformation.Location</p>
+
+<ul>
+    @foreach (var product in ViewBag.OnePageOfPassages)
+    {
+        <li>@product.VehicleEPC</li>
+    }
+</ul>
+
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfPassages, page => Url.Action("SearchResult", new { page }))
+
+
